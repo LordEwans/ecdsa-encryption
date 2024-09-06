@@ -26,7 +26,7 @@ func main() {
 	publicKeyECDSA := privateKeyECDSA.Public()
 
 	// We'll try encrypting and decrypting a simple message: "hello, world!"
-	message := []byte("{\"name\":\"John\", \"age\":30, \"city\":\"New York\", \"more\":{\"name\":\"John\", \"age\":30, \"city\":\"New York\"}, \"array\":[1,2,3,4,5,6,7,8,9,10]}")
+	message := []byte("hello world")
 
 	// Now, let's encrypt the message with our public key
 	publicKeyECIES := ecies.ImportECDSAPublic(publicKeyECDSA.(*ecdsa.PublicKey))

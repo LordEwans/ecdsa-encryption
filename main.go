@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"crypto/ecdsa"
 	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"log"
 
@@ -38,5 +40,28 @@ func main() {
 	}
 
 	// If everything went smoothly, this will print: hello, world!
-	fmt.Println(string(plaintext), " from ", ciphertext)
+	fmt.Println("Original message from ciphertext:", string(plaintext))
+
+	// Convert ciphertext to a hexadecimal string
+	ciphertextHex := fmt.Sprintf("%x", ciphertext)
+	fmt.Println("Ciphertext as hex string:", ciphertextHex)
+
+	// Convert hexadecimal string back to []byte
+	ciphertextBytes, err := hex.DecodeString(ciphertextHex)
+	if err != nil {
+		log.Fatalf("Failed to decode hex string: %v", err)
+	}
+
+	// Verify that the converted ciphertext matches the original
+	if !bytes.Equal(ciphertext, ciphertextBytes) {
+		log.Fatalf("Converted ciphertext doesn't match the original")
+	}
+
+	// Decrypt the converted ciphertext to ensure it still works
+	convertedPlaintext, err := privateKeyECIES.Decrypt(ciphertextBytes, nil, nil)
+	if err != nil {
+		log.Fatalf("Failed to decrypt converted ciphertext: %v", err)
+	}
+
+	fmt.Println("Decrypted message from converted ciphertext:", string(convertedPlaintext))
 }

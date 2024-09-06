@@ -44,7 +44,8 @@ func main() {
 
 	// Convert ciphertext to a hexadecimal string
 	ciphertextHex := fmt.Sprintf("%x", ciphertext)
-	fmt.Println("Ciphertext as hex string:", ciphertextHex)
+	fmt.Printf("Ciphertext as string: %s\n", ciphertextHex)
+	fmt.Print("Ciphertext as hex string: \n", ciphertextHex)
 
 	// Convert hexadecimal string back to []byte
 	ciphertextBytes, err := hex.DecodeString(ciphertextHex)

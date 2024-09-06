@@ -38,5 +38,5 @@ func main() {
 	}
 
 	// If everything went smoothly, this will print: hello, world!
-	fmt.Println(string(plaintext), " from ", ciphertext, " as ", string(ciphertext))
+	fmt.Println(string(plaintext), " from ", ciphertext)
 }

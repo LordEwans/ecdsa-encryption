@@ -14,4 +14,4 @@ go mod tidy
 go run main.go
 ```
 
-To test the encryption and decryption on specific messages, you can modify the `main.go` file. I'll try to replicate this functionality in mpc-tss-lib.
+To test the encryption and decryption on specific messages, you can modify the `main.go` file.
